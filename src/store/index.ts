@@ -1,3 +1,10 @@
-import { createContext } from "react";
-const MyContext = createContext({data:''})
-export default MyContext
+import  reducers  from './rootReducer'
+// import { legacy_createStore as createStore } from 'redux'
+import { createStore } from 'redux'
+
+const store = createStore(
+    reducers
+)
+
+
+export default store

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, forwardRef, useImperativeHandle, useRef ,memo,useContext} from 'react';
 import { ModalProps } from 'antd';
-import MyContext from '../../store';
+import MyContext from '../../storeContext';
 
 type ImperativeHandleRef = {
   inputRef: React.RefObject<HTMLInputElement>;

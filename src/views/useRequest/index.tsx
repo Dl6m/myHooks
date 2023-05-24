@@ -2,8 +2,10 @@ import React, { ReactNode, useState, useEffect, useCallback, useMemo, useRef, me
 import { Cascader, DatePicker, Button, ModalProps } from 'antd';
 import SelectorTime from '../../components/selectorTime';
 import { useGetState } from 'ahooks';
-import MyContext from '../../store';
+import MyContext from '../../storeContext';
 import ImperativeHandle from '../ImperativeHandle/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { pickerType } from '../../store/DatePicker/action';
 type Props = {
   children?: ReactNode;
   className?: string;
@@ -20,6 +22,7 @@ const MyComponent: React.FC<Props> = ({ children, className, ...ages }) => {
     console.log(value, 'value');
     SetValue(value);
   };
+  const dispatch = useDispatch();
   const linst = useMemo(() => {
     return value[value.length - 1];
   }, [value]);
@@ -35,8 +38,32 @@ const MyComponent: React.FC<Props> = ({ children, className, ...ages }) => {
     }
   }, []);
 
+  const sendDdata = () => {
+    console.log(pickerType({
+        timeFields: [{ field: 'string;', type: 'string;', fieldValue: 'string;' }],
+        descript: 'string,',
+        timeFormatList: {
+          startTime: 'string;',
+          endTime: 'string;'
+        },
+        selectType: 'string'
+      }));
+
+    dispatch(
+        pickerType({
+            timeFields: [{ field: 'string;', type: 'string;', fieldValue: 'string;' }],
+            descript: 'string,',
+            timeFormatList: {
+              startTime: 'string;',
+              endTime: 'string;'
+            },
+            selectType: 'string'
+          })
+    );
+  };
+
   return (
-    <MyContext.Provider value={{data:valueString}}>
+    <MyContext.Provider value={{ data: valueString }}>
       <div>
         最后的月份
         {linst}
@@ -104,10 +131,11 @@ const MyComponent: React.FC<Props> = ({ children, className, ...ages }) => {
         >
           简单类型更新
         </Button>
-        <Button onClick={()=>setValueString('context')}>变化</Button>
+        <Button onClick={() => setValueString('context')}>变化</Button>
         <iframe src="https://v.qq.com/txp/iframe/player.html?vid=l00462zznxg">1111111111</iframe>
         <ImperativeHandle ref={sonRef} value={valueString} classNames={obj}></ImperativeHandle>
       </div>
+      <Button onClick={sendDdata}>发送仓库</Button>
     </MyContext.Provider>
   );
 };
