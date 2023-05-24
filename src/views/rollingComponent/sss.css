@@ -1,0 +1,43 @@
+/* MyModal.css */
+
+/* 定义 modal 内容区域的缩放动画 */
+.my-modal-ani-enter {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.my-modal-ani-enter-active {
+  transform: scale(1);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.my-modal-ani-leave {
+  transform: scale(1);
+  opacity: 0;
+}
+
+.my-modal-ani-leave-active {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* 定义 modal 遮罩层的透明度动画 */
+.my-modal-mask-ani-enter {
+  opacity: 0;
+}
+
+.my-modal-mask-ani-enter-active {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.my-modal-mask-ani-leave {
+  opacity: 1;
+}
+
+.my-modal-mask-ani-leave-active {
+  opacity: 0;
+  transition: all 0.3s ease;
+}

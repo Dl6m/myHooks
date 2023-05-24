@@ -1,0 +1,14 @@
+
+    tbody.ant-table-tbody {
+       
+        animation: identifier 100s linear 1s infinite normal forwards;
+    }
+    
+    @keyframes identifier {
+        0% {
+            transform: translateY(0);
+        }
+        80% {
+            transform: translateY(-50%);
+        }
+    }
